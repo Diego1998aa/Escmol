@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Título de la Noticia - Noticias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+<body class="font-sans bg-gray-50">
+    <header class="modern-header sticky top-0 z-50 bg-primary text-white p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <h1 id="news-title" class="text-3xl font-bold">Título de la Noticia</h1>
+            <a href="../menu-pages/noticias.html" class="text-secondary hover:underline">Volver a Noticias</a>
+        </div>
+    </header>
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <img id="news-image" src="https://via.placeholder.com/800x400" alt="Imagen de la noticia" class="w-full h-auto rounded-md mb-6 object-cover" />
+        <article class="prose max-w-none text-gray-800">
+            <p>Fecha de publicación: <time datetime="2024-01-01">1 de Enero de 2024</time></p>
+            <p>Autor: Nombre del autor</p>
+            <hr class="my-6" />
+            <p>Este es el contenido principal de la noticia. Aquí puedes escribir párrafos detallados, incluir citas, listas, imágenes adicionales y cualquier otro contenido relevante para la noticia.</p>
+            <blockquote class="border-l-4 border-accent1 pl-4 italic text-gray-600 my-6">
+                "Esta es una cita destacada dentro de la noticia para resaltar información importante."
+            </blockquote>
+            <p>Continúa con más contenido, explicaciones y detalles que hagan la noticia atractiva y fácil de leer para los visitantes.</p>
+            <ul class="list-disc list-inside my-4">
+                <li>Punto importante 1</li>
+                <li>Punto importante 2</li>
+                <li>Punto importante 3</li>
+            </ul>
+            <p>Finaliza con un llamado a la acción o conclusión que invite a los lectores a interactuar o informarse más.</p>
+        </article>
+    </main>
+    <footer class="bg-primary text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>Escuela Olegario Morales Oliva - 1910 - Presente</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,364 @@
+/* Google Fonts Import (opcional, pero recomendado para mejor tipografía) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Variables CSS para colores y fuentes (facilita cambios futuros) */
+:root {
+    --primary-color: #00205B; /* Azul oscuro principal */
+    --secondary-color: #FFC72C; /* Amarillo/Dorado acento */
+    --text-color-dark: #1a202c; /* Para títulos y texto importante */
+    --text-color-light: #4a5568; /* Para párrafos y texto secundario */
+    --background-card: #ffffff;
+    --border-color-soft: rgba(0, 32, 91, 0.12);
+    --shadow-soft: 0 5px 15px rgba(0, 32, 91, 0.08);
+    --shadow-hover: 0 12px 25px rgba(0, 32, 91, 0.15);
+    --font-family-main: 'Poppins', sans-serif; /* Fuente principal */
+    --border-radius-card: 16px; /* Un poco más redondeado */
+    --transition-speed: 0.35s;
+}
+
+/* Estilos base para el cuerpo (opcional, pero bueno para consistencia) */
+body {
+    font-family: var(--font-family-main);
+    color: var(--text-color-light);
+    background-color: #f7fafc; /* Un fondo ligeramente gris para que las tarjetas resalten */
+    line-height: 1.6;
+}
+
+/* Academic Program Card Styles */
+.feature-card-improved {
+    background: var(--background-card);
+    border-radius: var(--border-radius-card);
+    padding: 2.5rem; /* Un poco más de padding */
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition-speed) cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición más suave */
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--border-color-soft);
+    display: flex; /* Para alinear el icono y el contenido si es necesario */
+    flex-direction: column; /* Contenido debajo del icono */
+    overflow: hidden; /* Para efectos de borde o fondo */
+}
+
+.feature-card-improved:hover {
+    transform: translateY(-8px) scale(1.01); /* Sutil escalado y mayor elevación */
+    box-shadow: var(--shadow-hover);
+    border-color: var(--secondary-color); /* Borde de acento al hacer hover */
+}
+
+.feature-icon {
+    width: 64px; /* Ligeramente más grande */
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, var(--primary-color), #003380); /* Gradiente sutil */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.8rem; /* Más espacio debajo del icono */
+    box-shadow: 0 6px 12px rgba(0, 32, 91, 0.15);
+    transition: all var(--transition-speed) cubic-bezier(0.25, 0.8, 0.25, 1);
+    flex-shrink: 0; /* Evita que el icono se encoja si hay mucho texto */
+}
+
+.feature-card-improved:hover .feature-icon { /* Efecto en el icono cuando se hace hover en la tarjeta */
+    background: linear-gradient(145deg, var(--secondary-color), #fdb813);
+    transform: translateY(-4px) scale(1.05) rotate(-5deg); /* Movimiento y rotación sutil */
+    box-shadow: 0 8px 18px rgba(255, 199, 44, 0.3);
+}
+
+.feature-icon svg {
+    width: 32px; /* Ligeramente más grande */
+    height: 32px;
+    fill: white;
+    transition: fill var(--transition-speed) ease;
+}
+
+.feature-card-improved:hover .feature-icon svg {
+    fill: var(--primary-color); /* Cambia el color del SVG al hacer hover en la tarjeta */
+}
+
+/* Estilos para el contenido de la tarjeta (asumiendo que tienes h3 y p) */
+.feature-card-improved h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.feature-card-improved p {
+    font-size: 0.95rem; /* Ligeramente más pequeño para jerarquía */
+    color: var(--text-color-light);
+    margin-bottom: 0; /* Elimina margen inferior si es el último elemento */
+}
+
+/* Animation Styles (sin cambios, ya están bien) */
+.animate-fade-slide {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideIn 0.6s forwards;
+}
+
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Delay animations for staggered effect (sin cambios) */
+.animate-fade-slide:nth-child(1) { animation-delay: 0.1s; }
+.animate-fade-slide:nth-child(2) { animation-delay: 0.2s; }
+.animate-fade-slide:nth-child(3) { animation-delay: 0.3s; }
+.animate-fade-slide:nth-child(4) { animation-delay: 0.4s; }
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 992px) {
+    .feature-card-improved {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-card-improved {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .feature-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 1.5rem;
+    }
+    .feature-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+    .feature-card-improved h3 {
+        font-size: 1.2rem;
+    }
+    .feature-card-improved p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-card-improved {
+        padding: 1.25rem;
+    }
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .feature-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+/* Lista estilizada con íconos */
+.feature-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--text-color-dark);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.feature-list li i {
+    color: var(--secondary-color);
+    font-size: 1rem;
+}
+
+/* Añade un glow leve futurista */
+.feature-card-improved {
+    position: relative;
+    background: var(--background-card);
+    border-radius: var(--border-radius-card);
+    padding: 2.5rem;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.05), 0 8px 20px rgba(0, 32, 91, 0.08);
+    border: 1px solid var(--border-color-soft);
+    backdrop-filter: blur(2px);
+}
+
+/* Brillo sutil al hacer hover */
+.feature-card-improved::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.07) 0%, transparent 70%);
+    transform: rotate(25deg);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.feature-card-improved:hover::before {
+    opacity: 1;
+}
+
+/* Efecto holográfico leve al ícono */
+.feature-icon {
+    background: linear-gradient(145deg, var(--primary-color), #0052cc);
+    box-shadow: 0 8px 18px rgba(0, 32, 91, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+/* Brillo al hover */
+.feature-card-improved:hover .feature-icon {
+    background: linear-gradient(145deg, var(--secondary-color), #ffdb4d);
+}
+
+/* Encabezados futuristas */
+.feature-card-improved h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Enhanced fade-slide animation with scale and rotation */
+@keyframes fadeSlideInEnhanced {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95) rotateX(10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0deg);
+    }
+}
+
+.animate-fade-slide {
+    animation-name: fadeSlideInEnhanced;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Hover effect on list items inside feature cards */
+.feature-card-improved ul li:hover {
+    color: var(--secondary-color);
+}
+
+.feature-card-improved ul li:hover i {
+    color: var(--primary-color);
+    text-shadow: 0 0 8px var(--secondary-color);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Focus styles for accessibility */
+.feature-card-improved:focus-within {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 4px;
+}
+
+/* Continuous subtle glowing animation on feature icons */
+@keyframes iconGlow {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(255, 199, 44, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(255, 199, 44, 1);
+    }
+}
+
+.feature-icon {
+    animation: iconGlow 3s ease-in-out infinite;
+    background: linear-gradient(145deg, #0008ff, #5900ff); /* More striking orange to pink gradient */
+    box-shadow: 0 8px 18px rgba(255, 106, 0, 0.6);
+}
+
+.feature-icon i, .feature-icon svg {
+    color: #FFF200; /* Bright yellow icon color */
+    transition: color 0.3s ease;
+}
+
+.feature-card-improved:hover .feature-icon i,
+.feature-card-improved:hover .feature-icon svg {
+    color: #FF6A00; /* Icon color changes on hover to orange */
+}
+
+/* 3D tilt effect container */
+.feature-card-improved {
+    perspective: 1000px;
+    will-change: transform;
+    transition: transform 0.3s ease;
+}
+
+/* Badge for card titles */
+.badge {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.15em 0.6em;
+    border-radius: 12px;
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+}
+
+/* Separator between list items */
+.feature-list li {
+    border-bottom: 1px solid rgba(0, 32, 91, 0.1);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.4rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Enhanced hover effect on list items */
+.feature-list li:hover {
+    background-color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 32, 91, 0.15);
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-list li:hover *,
+.feature-list li:hover span,
+.feature-list li:hover a {
+    color: var(--primary-color) !important;
+    text-shadow: 0 0 8px var(--secondary-color) !important;
+}
+
+.feature-list li:hover i {
+    color: var(--primary-color) !important;
+    text-shadow: 0 0 8px var(--secondary-color) !important;
+}
+
+/* 3D tilt effect on card hover */
+.feature-card-improved:hover {
+    transform: translateY(-8px) scale(1.02) rotateX(5deg);
+}
+
+/* Subtle background gradient for cards */
+.feature-card-improved {
+    background: linear-gradient(135deg, #ffffff, #f0f4ff);
+}
+
+/* Smooth transitions for cards */
+.feature-card-improved,
+.feature-list li {
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}

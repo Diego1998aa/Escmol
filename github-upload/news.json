@@ -1,0 +1,26 @@
+[
+  {
+    "id": "noticia1",
+    "title": "Nuestra Primera Noticia",
+    "description": "¡Bienvenidos a nuestra nueva experiencia!.",
+    "image": "assets/fotonoticia1index.jpg"
+  },
+  {
+    "id": "noticia2",
+    "title": "Logros Académicos",
+    "description": "Nuestros estudiantes destacan en competencias regionales.",
+    "image": "https://images.pexels.com/photos/8613070/pexels-photo-8613070.jpeg"
+  },
+  {
+    "id": "noticia3",
+    "title": "Actividades Extracurriculares",
+    "description": "Nuevos talleres disponibles para nuestros estudiantes.",
+    "image": "https://images.pexels.com/photos/8613319/pexels-photo-8613319.jpeg"
+  },
+  {
+    "id": "noticia4",
+    "title": "Avances en Instalaciones",
+    "description": "Se está avanzando en las instalaciones del colegio para nuestros mas pequeños. ¡Te invitamos a ver los avances!",
+    "image": "assets/imagen1noticia4.jpg"
+  }
+]

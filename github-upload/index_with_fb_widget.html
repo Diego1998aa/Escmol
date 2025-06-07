@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Escuela Olegario Morales Oliva - Paillaco</title>
+    <link rel="icon" href="assets/logoColeOptimizado.png" type="image/png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00205B',
+                        secondary: '#FFD700',
+                        accent1: '#00B2FF',
+                        accent2: '#FF0000',
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="font-sans">
+    <!-- Facebook Widget -->
+    <div id="fb-widget" class="fixed top-1/4 right-0 z-50 flex flex-col items-center bg-white shadow-lg rounded-l-lg overflow-hidden transition-all duration-300" style="width: 350px; max-width: 90vw;">
+        <button id="fb-toggle" aria-label="Toggle Facebook Widget" class="w-10 h-10 bg-primary text-white flex items-center justify-center rounded-l-lg hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary transition">
+            <i class="fab fa-facebook-f text-lg"></i>
+        </button>
+        <div id="fb-content" class="w-full">
+            <div class="fb-page" 
+                data-href="https://www.facebook.com/EscOlegarioMorales" 
+                data-tabs="timeline" 
+                data-width="350" 
+                data-height="500" 
+                data-small-header="false" 
+                data-adapt-container-width="true" 
+                data-hide-cover="false" 
+                data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/EscOlegarioMorales" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/EscOlegarioMorales">Escuela Olegario Morales Oliva</a>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v17.0" nonce="FbWidget"></script>
+
+    <!-- Top Bar -->
+    <div class="bg-secondary text-primary py-2 px-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <!-- Left buttons -->
+            <div class="flex items-center space-x-4">
+                <a href="tel:632422560" class="phone-hover hover:text-primary-dark transition">
+                    <i class="fas fa-phone"></i>
+                    <span class="phone-number">632-422560</span>
+                </a>
+                <a href="mailto:contacto@paillaco.cl" class="email-hover hover:text-primary-dark transition">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email-text">contacto@paillaco.cl</span>
+                </a>
+            </div>
+
+            <!-- Center slogan -->
+            <div class="slogan-container">
+                <h2 class="font-sans font-bold text-primary text-sm md:text-base">
+                    Desde 1910 formando líderes con valores para Chile
+                </h2>
+            </div>
+            <!-- Right buttons -->
+            <div class="flex items-center space-x-3">
+                <a href="#" class="top-button flex items-center space-x-1 rounded px-2 py-1 hover:bg-white/20 transition-all">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Intranet</span>
+                </a>
+                <a href="#" class="top-button flex items-center space-x-1 rounded px-2 py-1 hover:bg-white/20 transition-all">
+                    <i class="fas fa-headset"></i>
+                    <span>Soporte</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header/Navigation (Cabecera) -->
+    <header class="modern-header sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="modern-logo flex items-center">
+                    <div class="logo-container">
+                        <img src="assets/logoColeOptimizado.png" alt="Logo Escuela Olegario Morales Oliva" class="h-20" />
+                    </div>
+                    <div class="ml-4">
+                        <h1 class="text-2xl font-bold text-white font-display tracking-wide">Escuela Olegario Morales Oliva</h1>
+                        <p class="text-sm text-blue-200">1910 - Presente</p>
+                    </div>
+                </div>
+                <div id="datetime-widget">
+                    <div class="flex items-center">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span id="current-time" style="opacity: 1;"></span>
+                    </div>
+                    <span id="current-date" style="opacity: 1; font-size: 0.9em;"></span>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <nav class="modern-nav hidden md:flex space-x-8 mt-4 border-t border-white/20 pt-4 justify-center my-4">
+            <a href="#inicio" class="modern-nav-link transition bg-secondary text-primary rounded-md px-3 py-1 inline-block">Inicio</a>
+            <div class="relative group">
+                <a href="#colegio" class="modern-nav-link transition inline-block">Colegio</a>
+                <div class="absolute left-0 mt-1 w-[520px] dropdown-gradient rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto z-50 p-4">
+                    <div class="flex space-x-6">
+                        <ul class="w-1/2 border-r border-white/20 pr-6">
+                            <li><a href="menu-pages/quienes-somos.html" class="block px-4 py-2 hover:bg-white/10 rounded">¿Quienes Somos?</a></li>
+                            <li><a href="#organizacion-constitucional" class="block px-4 py-2 hover:bg-white/10 rounded">Organización Constitucional</a></li>
+                            <li><a href="#documentos-institucionales" class="block px-4 py-2 hover:bg-white/10 rounded">Documentos Institucionales</a></li>
+                            <li><a href="#admision" class="block px-4 py-2 hover:bg-white/10 rounded">Admisión</a></li>
+                            <li><a href="#uniforme" class="block px-4 py-2 hover:bg-white/10 rounded">Uniforme</a></li>
+                        </ul>
+                        <ul class="w-1/2 pl-4">
+                            <li><a href="#bienvenida-director" class="block px-4 py-2 hover:bg-white/10 rounded">Bienvenida Director</a></li>
+                            <li><a href="#infraestructura" class="block px-4 py-2 hover:bg-white/10 rounded">Infraestructura</a></li>
+                            <li><a href="menu-pages/anuario.html" class="block px-4 py-2 hover:bg-white/10 rounded">Anuario</a></li>
+                            <li><a href="#himnos" class="block px-4 py-2 hover:bg-white/10 rounded">Ex-Alumnos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group">
+                <a href="#alumnos" class="modern-nav-link transition inline-block">Alumnos</a>
+                <div class="absolute left-0 mt-1 w-[280px] dropdown-gradient rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto z-50 p-4">
+                    <ul class="py-2">
+                        <li><a href="#ceal" class="block px-4 py-2 hover:bg-white/10 rounded">CEAL</a></li>
+                        <li><a href="#subcentro" class="block px-4 py-2 hover:bg-white/10 rounded">SubCentro</a></li>
+                        <li><a href="#accion-social" class="block px-4 py-2 hover:bg-white/10 rounded">Acción Social</a></li>
+                        <li><a href="#ensayo-paes" class="block px-4 py-2 hover:bg-white/10 rounded">Ensayo Paes</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="relative group">
+                <a href="#area-academica" class="modern-nav-link transition inline-block">Área Académica</a>
+                <div class="absolute left-0 mt-1 w-[520px] dropdown-gradient rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto z-50 p-4">
+                    <div class="flex space-x-6">
+                        <ul class="w-1/2 border-r border-white/20 pr-6">
+                            <li><a href="#director-academico" class="block px-4 py-2 hover:bg-white/10 rounded">Director Académico</a></li>
+                            <li><a href="#educacion-fisica" class="block px-4 py-2 hover:bg-white/10 rounded">Educación Física</a></li>
+                            <li><a href="#ingles" class="block px-4 py-2 hover:bg-white/10 rounded">Inglés</a></li>
+                            <li><a href="#ciencia-tecnologia" class="block px-4 py-2 hover:bg-white/10 rounded">Ciencia y Tecnología</a></li>
+                            <li><a href="#historia-ciencias-sociales" class="block px-4 py-2 hover:bg-white/10 rounded">Historia y Ciencias Sociales</a></li>
+                            <li><a href="#asistente-educacion" class="block px-4 py-2 hover:bg-white/10 rounded">Asistente de la educación</a></li>
+                        </ul>
+                        <ul class="w-1/2 pl-4">
+                            <li><a href="#religion" class="block px-4 py-2 hover:bg-white/10 rounded">Religión</a></li>
+                            <li><a href="#jefaturas-departamentos" class="block px-4 py-2 hover:bg-white/10 rounded">Jefaturas de Departamentos</a></li>
+                            <li><a href="#niveles-educacion" class="block px-4 py-2 hover:bg-white/10 rounded">Niveles de Educación (Pre-Básica, Básica, Media)</a></li>
+                            <li><a href="#lenguaje-comunicacion" class="block px-4 py-2 hover:bg-white/10 rounded">Lenguaje y Comunicación</a></li>
+                            <li><a href="#artes" class="block px-4 py-2 hover:bg-white/10 rounded">Artes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group">
+                <a href="#talleres" class="modern-nav-link transition inline-block">Talleres</a>
+                <div class="absolute left-0 mt-1 w-[280px] dropdown-gradient rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto z-50 p-4">
+                    <ul class="py-2">
+                        <li><a href="#orquesta" class="block px-4 py-2 hover:bg-white/10 rounded">Orquesta</a></li>
+                        <li><a href="#banda-instrumental" class="block px-4 py-2 hover:bg-white/10 rounded">Banda Instrumental</a></li>
+                        <li><a href="#coro" class="block px-4 py-2 hover:bg-white/10 rounded">Coro</a></li>
+                        <li><a href="#futbol" class="block px-4 py-2 hover:bg-white/10 rounded">Futbol</a></li>
+                        <li><a href="#ajedrez" class="block px-4 py-2 hover:bg-white/10 rounded">Ajedrez</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="relative group">
+                <a href="#convivencia-escolar" class="modern-nav-link transition inline-block">Convivencia Escolar</a>
+                <div class="absolute left-0 mt-1 w-[320px] dropdown-gradient rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto z-50 p-4">
+                    <ul class="py-2">
+                        <li><a href="Documents/ReglamentodeConvivenciaActual.pdf" download class="block px-4 py-2 hover:bg-white/10 rounded">Descargar Reglamento de Convivencia</a></li>
+                    </ul>
+                </div>
+            </div>
+                <div class="relative group">
+                    <a href="#pie" class="modern-nav-link transition inline-block">PIE</a>
+                    <div class="absolute left-0 mt-1 w-[200px] dropdown-gradient rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto z-50 p-4">
+                        <ul class="py-2">
+                            <li><a href="#pie-sub1" class="block px-4 py-2 hover:bg-white/10">Submenu 1</a></li>
+                            <li><a href="#pie-sub2" class="block px-4 py-2 hover:bg-white/10">Submenu 2</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <a href="#centro-de-padres" class="modern-nav-link transition inline-block">Centro de Padres</a>
+                    <div class="absolute left-0 mt-1 w-[200px] dropdown-gradient rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto z-50 p-4">
+                        <ul class="py-2">
+                            <li><a href="#centro-de-padres-sub1" class="block px-4 py-2 hover:bg-white/10">Submenu 1</a></li>
+                            <li><a href="#centro-de-padres-sub2" class="block px-4 py-2 hover:bg-white/10">Submenu 2</a></li>
+                        </ul>
+                    </div>
+                </div>
+        </nav>
+    </header>
+
+    <div id="content-container">
+        <!-- Original main content wrapped inside content-container -->
+        <!-- Hero Section -->
+        <section id="inicio" class="hero-carousel relative">
+            <div class="carousel-container absolute inset-0 overflow-hidden">
+                <img src="fotosfondo/imagen01.jpg" alt="Foto Colegio 1" class="active" />
+                <img src="fotosfondo/imagen02.jpg" alt="Foto Colegio 2" />
+                <img src="fotosfondo/imagen03.jpg" alt="Foto Colegio 3" />
+                <img src="fotosfondo/imagen04.jpg" alt="Foto Colegio 4" />
+                <img src="fotosfondo/imagen05.jpg" alt="Foto Colegio 5" />
+                <img src="fotosfondo/imagen06.jpg" alt="Foto Colegio 6" />
+            </div>
+            <!-- Eliminado div con fondo azul -->
+            <div class="container mx-auto px-4 h-full flex flex-col justify-center items-center text-center text-white relative z-10">
+                <h2 class="hero-title text-4xl md:text-5xl font-bold mb-6">Bienvenidos a Escuela Olegario Morales Oliva</h2>
+                <p class="hero-subtitle text-xl mb-8 max-w-2xl mx-auto">Formando líderes del mañana con excelencia académica y valores</p>
+                <a href="#admision" class="custom-button text-white font-bold py-3 px-8 rounded-full inline-block hover:shadow-lg transition duration-300">
+                    Conoce más
+                </a>
+            </div>
+        </section>
+<script src="scripts.js"></script>
+</body>
+
+        <!-- News Section -->
+        <section id="noticias" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-primary mb-12">
+                    <a href="menu-pages/noticias.html" class="hover:underline">Últimas Noticias</a>
+                </h2>
+                <div class="relative">
+                    <button id="scroll-left" aria-label="Scroll Left" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-primary text-white rounded-full p-2 shadow hover:bg-primary-dark transition">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div id="news-container" class="flex overflow-x-auto space-x-6 scrollbar-hide scroll-smooth px-8">
+                        <!-- News cards will be loaded dynamically here -->
+                    </div>
+
+                    <!-- Modal -->
+                    <div id="news-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+                        <div class="bg-white rounded-lg shadow-lg max-w-3xl w-full mx-4 p-6 relative">
+                            <button id="modal-close" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl font-bold">&times;</button>
+                            <h2 id="modal-title" class="text-2xl font-bold mb-4"></h2>
+                            <img id="modal-image" src="" alt="" class="w-full h-64 object-cover rounded-md mb-4" />
+                            <div id="modal-content" class="prose max-w-none"></div>
+                        </div>
+                    </div>
+
+                    <script>
+                        async function loadNews() {
+                            const response = await fetch('news.json');
+                            const news = await response.json();
+                            const container = document.getElementById('news-container');
+                            container.innerHTML = '';
+                            const modal = document.getElementById('news-modal');
+                            const modalTitle = document.getElementById('modal-title');
+                            const modalImage = document.getElementById('modal-image');
+                            const modalContent = document.getElementById('modal-content');
+                            const modalClose = document.getElementById('modal-close');
+
+                            function openModal(item) {
+                                modalTitle.textContent = item.title;
+                                modalImage.src = item.image;
+                                modalImage.alt = item.title;
+                                modalContent.innerHTML = `<p>${item.description}</p>`;
+                                modal.classList.remove('hidden');
+                                modal.classList.add('flex');
+                            }
+
+                            modalClose.addEventListener('click', () => {
+                                modal.classList.add('hidden');
+                                modal.classList.remove('flex');
+                            });
+
+                            news.forEach(item => {
+                                const card = document.createElement('div');
+                                card.className = 'news-card bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80 cursor-pointer';
+                                card.innerHTML = `
+                                    <img src="${item.image}" alt="${item.title}" class="w-full h-48 object-cover" />
+                                    <div class="p-6">
+                                        <h3 class="text-xl font-semibold mb-2">${item.title}</h3>
+                                        <p class="text-gray-600 mb-4">${item.description}</p>
+                                        <span class="text-accent1 font-semibold hover:text-primary underline cursor-pointer">Leer más →</span>
+                                    </div>
+                                `;
+                                card.querySelector('span').addEventListener('click', () => openModal(item));
+                                container.appendChild(card);
+                            });
+                        }
+                        loadNews();
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider">
+            <i class="fas fa-graduation-cap divider-icon"></i>
+        </div>
+
+        <!-- Academic Section -->
+        <section id="academico" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-primary mb-12">Programa Académico</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <div class="bg-accent1 text-white rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                            <i class="fas fa-child text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Educación Básica</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><i class="fas fa-check text-accent1 mr-2"></i>Desarrollo integral</li>
+                            <li><i class="fas fa-check text-accent1 mr-2"></i>Aprendizaje activo</li>
+                            <li><i class="fas fa-check text-accent1 mr-2"></i>Atención personalizada</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <div class="bg-secondary text-primary rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                            <i class="fas fa-music text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Talleres Extracurriculares</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><i class="fas fa-check text-secondary mr-2"></i>Deportes</li>
+                            <li><i class="fas fa-check text-secondary mr-2"></i>Arte y Música</li>
+                            <li><i class="fas fa-check text-secondary mr-2"></i>Tecnología</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <div class="bg-accent2 text-white rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                            <i class="fas fa-brain text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Apoyo al Estudiante</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><i class="fas fa-check text-accent2 mr-2"></i>Orientación vocacional</li>
+                            <li><i class="fas fa-check text-accent2 mr-2"></i>Apoyo psicopedagógico</li>
+                            <li><i class="fas fa-check text-accent2 mr-2">Tutorías académicas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider">
+            <i class="fas fa-map-marker-alt divider-icon"></i>
+        </div>
+
+        <!-- Contact Section -->
+        <section id="Donde nos ubicamos" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-primary mb-12">Contacto</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4">Información de Contacto</h3>
+                            <div class="space-y-4">
+                                <p class="flex items-center text-gray-600">
+                                    <i class="fas fa-map-marker-alt text-accent1 mr-3"></i>
+                                    Dirección: Bernardo O'Higgins 479, Paillaco, Región de Los Rios.
+                                </p>
+                                <p class="flex items-center text-gray-600">
+                                    <i class="fas fa-phone text-accent1 mr-3"></i>
+                                    Teléfono: +63 2422560
+                                </p>
+                                <p class="flex items-center text-gray-600">
+                                    <i class="fas fa-envelope text-accent1 mr-3"></i>
+                                    Email: Escolmor@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4">Horario de Atención</h3>
+                            <div class="space-y-2 text-gray-600">
+                                <p>Lunes a Viernes: 8:00 - 17:00</p>
+                                <p>Sábado: 9:00 - 13:00</p>
+                                <p>Domingo: Cerrado</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1399.3780325188463!2d-72.87237976128378!3d-40.07120869287428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9616798b8bd19b4f%3A0x3b723dc56b615bc5!2sEscuela%20Olegario%20Morales%20Oliva!5e1!3m2!1ses!2scl!4v1745452439248!5m2!1ses!2scl" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+     </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="assets/logoColeOptimizado.png" alt="Logo Footer" class="h-20 mb-4" />
+                    <p class="text-sm">Formando líderes del mañana con excelencia académica y valores.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#colegio" class="hover:text-secondary transition">Colegio</a></li>
+                        <li><a href="#alumnos" class="hover:text-secondary transition">Alumnos</a></li>
+                        <li><a href="#area-academica" class="hover:text-secondary transition">Área Académica</a></li>
+                        <li><a href="#talleres" class="hover:text-secondary transition">Talleres</a></li>
+                        <li><a href="#convivencia-escolar" class="hover:text-secondary transition">Convivencia Escolar</a></li>
+                        <li><a href="#pie" class="hover:text-secondary transition">PIE</a></li>
+                        <li><a href="#centro-de-padres" class="hover:text-secondary transition">Centro de Padres</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Servicios</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-secondary transition">SchoolTrack</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Intranet</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Biblioteca</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Soporte</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://web.facebook.com/EscOlegarioMorales" target="_blank" class="hover:text-secondary transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/omo_paillaco?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="hover:text-secondary transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="hover:text-secondary transition" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" target="_blank" class="hover:text-secondary transition" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/20 mt-8 pt-8 text-center flex items-center justify-center space-x-2">
+                <p class="mb-0">creado con pasión y dedicación por UrbanZync Paillaco <span class="text-green-600">&#x2618;</span></p>
+                <img src="assets/logoUrbanZync.png" alt="UrbanZync Logo" class="h-6 inline-block" />
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Facebook widget
+        const fbToggleBtn = document.getElementById('fb-toggle');
+        const fbWidget = document.getElementById('fb-widget');
+        const fbContent = document.getElementById('fb-content');
+
+        fbToggleBtn.addEventListener('click', () => {
+            if (fbContent.style.display === 'none' || fbContent.style.display === '') {
+                fbContent.style.display = 'block';
+                fbWidget.style.width = '350px';
+            } else {
+                fbContent.style.display = 'none';
+                fbWidget.style.width = '40px';
+            }
+        });
+
+        // Initialize widget as expanded
+        fbContent.style.display = 'block';
+        fbWidget.style.width = '350px';
+    </script>
+</body>
+</html>

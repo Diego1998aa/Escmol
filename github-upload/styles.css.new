@@ -1,0 +1,29 @@
+/* Clock widget styles */
+#datetime-widget {
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+#datetime-widget i {
+    color: var(--yellow);
+    opacity: 0.9;
+    font-size: 0.75rem;
+}
+
+#datetime-widget #current-time {
+    font-weight: 500;
+}
+
+#datetime-widget #current-date {
+    opacity: 0.8;
+}
+
+/* Rest of your existing styles */

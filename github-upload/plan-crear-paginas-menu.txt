@@ -1,0 +1,93 @@
+Plan Detallado para Crear las Páginas del Menú Manteniendo el Footer y el Reloj
+
+─────────────────────────────────────────────  
+1. Análisis y Preparación  
+─────────────────────────────────────────────  
+• Depender de los siguientes archivos y elementos:  
+  – Base de plantilla existente: “quienes-somos.html” (marca el código de header, menú de navegación, widget de fecha/hora y footer).  
+  – “scripts.js”: contiene la funcionalidad del reloj (actualización de “current-time” y “current-date”) y funciones adicionales (como el carrusel).  
+  – “styles.css”: estilos propios que complementan Tailwind y personalizaciones propias.  
+  – Assets (imágenes como logos, banners, íconos) y recursos externos (CDN de Tailwind, Google Fonts, Font Awesome).  
+  – Directorio “partials/” (si se decide, en un futuro, refactorizar partes comunes en archivos parciales).
+
+Antes de extender la funcionalidad, se debe revisar “index.html” y “styles.css” si se requirieran ajustes visuales en las nuevas páginas o para mantener la coherencia entre sitios.
+
+─────────────────────────────────────────────  
+2. Creación de un Template Base para Páginas del Menú  
+─────────────────────────────────────────────  
+Objetivo: Reducir duplicación de código y asegurar consistencia en header, footer y funcionalidad del reloj.  
+• Extraer (o copiar) la estructura del header y footer de “quienes-somos.html” (incluyendo:  
+  – Top Bar (contacto, eslogan y botones de Intranet/Soporte).  
+  – Header con logo, título y widget de fecha/hora.  
+  – Menú de navegación con enlaces y submenús completos, usando atributos ARIA para accesibilidad.  
+  – Footer con datos de logos, enlaces rápidos, servicios y redes sociales).  
+• Incluir en la sección <head> las referencias a:  
+  – Tailwind CSS (CDN).  
+  – Google Fonts.  
+  – Font Awesome.  
+  – El archivo “styles.css”.  
+• Al final del body, incluir la llamada a “scripts.js” para que el reloj (y cualquier otra función JS) se ejecute correctamente.
+
+Esta plantilla base puede guardarse (por ejemplo, en “base.html”) para facilitar la creación de cada nueva página, o bien se procederá a duplicar la estructura en cada archivo nuevo.
+
+─────────────────────────────────────────────  
+3. Definición y Creación de Nuevas Páginas para el Menú  
+─────────────────────────────────────────────  
+Cada nueva página se creará a partir del template base y se adaptará el contenido principal (dentro de <main>) según su sección. Ejemplos de páginas a crear:  
+  – “inicio.html” (Página de inicio con carrusel o sección de bienvenida).  
+  – “colegio.html” (Información ampliada del colegio, misión, visión, etc.).  
+  – “alumnos.html” (Sección dirigida a estudiantes, con información de actividades o registros).  
+  – “area-academica.html”, “talleres.html”, “convivencia.html”, “centro-de-padres.html”, etc.
+
+Para cada página:  
+a) Modificar la etiqueta <title> y cualquier meta descripción pertinente para mejorar SEO y usabilidad.  
+b) En la sección <main>:  
+  – Insertar contenido único que represente la sección.  
+  – Se recomienda incluir un “hero section” o banner destacado.  
+  – Integrar imágenes atractivas – se pueden utilizar enlaces directos de Pexels (ejemplo: https://images.pexels.com/…) para fondos o imágenes principales, asegurando un look moderno y visualmente impactante.  
+  – Organizar el contenido usando contenedores, grids y flexbox (mediante Tailwind CSS) que faciliten la lectura y sean responsivos.  
+c) Conservar intacta la estructura del header (con el reloj y menú) y footer para mantener consistencia en todo el sitio.
+
+─────────────────────────────────────────────  
+4. Integración de Funciones Dinámicas y Experiencia de Usuario (UI/UX)  
+─────────────────────────────────────────────  
+• El widget de fecha y hora se mantiene gracias a “scripts.js”. No es necesario modificarlo, pero se debe confirmar que cada nueva página tenga la siguiente estructura:  
+  – Un div con id="datetime-widget" que contenga los spans “current-time” y “current-date”, exactamente igual que en “quienes-somos.html”.  
+• Asegurar que el menú de navegación se comporte igual en todas las páginas:  
+  – Los enlaces deben ser relativos y apuntar correctamente a los archivos creados.  
+  – Los botones y dropdowns del menú deben responder al hover/focus (ya definidos mediante clases de Tailwind y eventuales scripts).  
+• UI Moderno y Detallado:  
+  – Usar hero sections con imágenes de alta calidad extraídas de Pexels (por ejemplo, un fondo representativo del colegio o la actividad correspondiente), integradas mediante URL públicas.  
+  – Aplicar márgenes, paddings y tipografías consistentes para mantener un diseño limpio.  
+  – Incluir elementos interactivos (como botones con hover, efectos de transición y animaciones suaves) para mejorar la experiencia de usuario.  
+  – Verificar que la versión móvil (mediante el botón de menú responsive) funcione correctamente en cada página.  
+• Funcionalidades adicionales realistas para secciones específicas:  
+  – En “centro-de-padres.html” se podría incluir un área de acceso o formularios de contacto, simulando funcionalidad de login (aunque sea solo un mockup).  
+  – En “talleres.html” se puede integrar una galería o carrusel de imágenes (usando funcionalidades similares a las ya presentes en “scripts.js”) con información detallada de cada taller.  
+  – En “alumnos.html” se pueden incorporar secciones informativas con tarjetas (cards) que describan actividades, eventos o noticias recientes.
+
+─────────────────────────────────────────────  
+5. Validación, Pruebas y Consideraciones de Error  
+─────────────────────────────────────────────  
+• Verificar que cada nueva página incluya de forma correcta:  
+  – Los enlaces a “styles.css”, “scripts.js” y recursos externos (CDN de Tailwind, fuentes y Font Awesome).  
+  – Estructuras semánticas (uso correcto de <header>, <nav>, <main> y <footer>).  
+• Uso de herramientas de validación HTML para detectar errores o inconsistencias.  
+• Probar en distintos dispositivos (desktop y móvil) para confirmar que:  
+  – El widget del reloj se actualice correctamente cada segundo.  
+  – El menú móvil y dropdown funcionen sin errores.  
+  – Las imágenes se carguen e integren de forma responsive.  
+• Manejo de errores:  
+  – En caso de que algún recurso (imagen, script o fuente) no se cargue, asegurarse de que el diseño defina un estilo de fallback o mensaje de error elegante.  
+  – Revisar la consola del navegador para detectar posibles conflictos de scripts.
+
+─────────────────────────────────────────────  
+6. Resumen y Próximos Pasos  
+─────────────────────────────────────────────  
+• Crear (o definir) una “plantilla base” a partir de “quienes-somos.html” para facilitar la generación de otras páginas del menú.  
+• Duplicar la estructura del header y footer en cada nueva página, adaptando el contenido principal y actualizando atributos como <title> y rutas de enlaces internos.  
+• Integrar imágenes públicas y elementos UI modernos en las secciones principales de cada página, garantizando un diseño atractivo y coherente.  
+• Testear exhaustivamente en diferentes dispositivos y navegadores para asegurar que todos los elementos (reloj, menú, interacciones) funcionen correctamente.  
+• Documentar y comentar el código para futuros mantenimientos o transiciones a un motor de plantillas si se decide migrar a una solución dinámica (por ejemplo, con PHP, Node.js o cualquier framework frontend).
+
+Este plan proporciona un esquema paso a paso, considerando las dependencias actuales y las mejores prácticas para lograr un sitio web moderno y funcional donde cada página del menú mantenga el footer, el reloj y la identidad visual definidos en “quienes-somos.html”.

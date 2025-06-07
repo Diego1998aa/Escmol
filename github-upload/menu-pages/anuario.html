@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anuario 2024 - Escuela Olegario Morales Oliva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+        /* Estilos adicionales para corregir problemas */
+        @media (min-width: 768px) {
+            .dropdown-gradient {
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+            
+            .group:hover .dropdown-gradient {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+        
+        /* Mejorar visualización del PDF */
+        iframe {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Mejorar estilos para el mensaje de fallback del PDF */
+        .pdf-fallback {
+            margin-top: 1rem;
+            border-radius: 0.375rem;
+        }
+        
+        .pdf-fallback a {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        
+        .pdf-fallback a:hover {
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-secondary text-primary py-2 px-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <!-- Left buttons -->
+            <div class="flex items-center space-x-4">
+                <a href="tel:632422560" class="phone-hover hover:text-primary-dark transition">
+                    <i class="fas fa-phone"></i>
+                    <span class="phone-number">632-422560</span>
+                </a>
+                <a href="mailto:contacto@paillaco.cl" class="email-hover hover:text-primary-dark transition">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email-text">contacto@paillaco.cl</span>
+                </a>
+            </div>
+
+            <!-- Center slogan -->
+            <div class="slogan-container">
+                <h2 class="font-sans font-bold text-primary text-sm md:text-base">
+                    Desde 1910 formando líderes con valores para Chile
+                </h2>
+            </div>
+            <!-- Right buttons -->
+            <div class="flex items-center space-x-3">
+                <a href="#" class="top-button flex items-center space-x-1 rounded px-2 py-1 hover:bg-white/20 transition-all">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Intranet</span>
+                </a>
+                <a href="#" class="top-button flex items-center space-x-1 rounded px-2 py-1 hover:bg-white/20 transition-all">
+                    <i class="fas fa-headset"></i>
+                    <span>Soporte</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header/Navigation (Cabecera) -->
+    <header class="modern-header sticky top-0" style="z-index: 1000;">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="modern-logo flex items-center">
+                    <div class="logo-container">
+                        <img src="../assets/logoColeOptimizado.png" alt="Logo Escuela Olegario Morales Oliva" class="h-20" />
+                    </div>
+                    <div class="ml-4">
+                        <h1 class="text-2xl font-bold text-white font-display tracking-wide">Escuela Olegario Morales Oliva</h1>
+                        <p class="text-sm text-blue-200">1910 - Presente</p>
+                    </div>
+                </div>
+                <div id="datetime-widget" class="flex flex-col items-end">
+                    <div class="flex items-center">
+                        <i class="fas fa-clock"></i>
+                        <span id="current-time" class="ml-2"></span>
+                    </div>
+                    <span id="current-date" class="mt-1"></span>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <nav class="modern-nav hidden md:flex space-x-8 mt-4 border-t border-white/20 pt-4 justify-center my-4" role="menubar" aria-label="Main navigation">
+            <a href="../index.html#inicio" class="modern-nav-link transition bg-secondary text-primary rounded-md px-3 py-1 inline-block" role="menuitem" tabindex="0">Inicio</a>
+            <div class="relative group" role="none">
+                <button aria-haspopup="true" aria-expanded="false" class="modern-nav-link transition inline-block" id="menu-colegio" aria-controls="submenu-colegio" role="menuitem" tabindex="0">
+                    Colegio
+                </button>
+                <div class="absolute left-0 mt-1 w-[520px] dropdown-gradient rounded-md shadow-lg z-50 p-4" id="submenu-colegio" role="menu" aria-labelledby="menu-colegio" tabindex="-1">
+                    <div class="flex space-x-6">
+                        <ul class="w-1/2 border-r border-white/20 pr-6">
+                            <li role="none"><a href="quienes-somos.html" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">¿Quienes Somos?</a></li>
+                            <li role="none"><a href="#organizacion-constitucional" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Organización Constitucional</a></li>
+                            <li role="none"><a href="#documentos-institucionales" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Documentos Institucionales</a></li>
+                            <li role="none"><a href="#admision" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Admisión</a></li>
+                            <li role="none"><a href="#uniforme" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Uniforme</a></li>
+                        </ul>
+                        <ul class="w-1/2 pl-4">
+                            <li role="none"><a href="#bienvenida-director" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Bienvenida Director</a></li>
+                            <li role="none"><a href="#infraestructura" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Infraestructura</a></li>
+                            <li role="none"><a href="#anuario" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Anuario</a></li>
+                            <li role="none"><a href="#himnos" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Ex-Alumnos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group" role="none">
+                <button aria-haspopup="true" aria-expanded="false" class="modern-nav-link transition inline-block" id="menu-alumnos" aria-controls="submenu-alumnos" role="menuitem" tabindex="0">
+                    Alumnos
+                </button>
+                <div class="absolute left-0 mt-1 w-[280px] dropdown-gradient rounded-md shadow-lg z-50 p-4" id="submenu-alumnos" role="menu" aria-labelledby="menu-alumnos" tabindex="-1">
+                    <ul class="py-2">
+                        <li role="none"><a href="#ceal" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">CEAL</a></li>
+                        <li role="none"><a href="#subcentro" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">SubCentro</a></li>
+                        <li role="none"><a href="#accion-social" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Acción Social</a></li>
+                        <li role="none"><a href="#ensayo-paes" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Ensayo Paes</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="relative group" role="none">
+                <button aria-haspopup="true" aria-expanded="false" class="modern-nav-link transition inline-block" id="menu-area" aria-controls="submenu-area" role="menuitem" tabindex="0">
+                    Área Académica
+                </button>
+                <div class="absolute left-0 mt-1 w-[520px] dropdown-gradient rounded-md shadow-lg z-50 p-4" id="submenu-area" role="menu" aria-labelledby="menu-area" tabindex="-1">
+                    <div class="flex space-x-6">
+                        <ul class="w-1/2 border-r border-white/20 pr-6">
+                            <li role="none"><a href="#director-academico" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Director Académico</a></li>
+                            <li role="none"><a href="#educacion-fisica" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Educación Física</a></li>
+                            <li role="none"><a href="#ingles" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Inglés</a></li>
+                            <li role="none"><a href="#ciencia-tecnologia" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Ciencia y Tecnología</a></li>
+                            <li role="none"><a href="#historia-ciencias-sociales" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Historia y Ciencias Sociales</a></li>
+                            <li role="none"><a href="#asistente-educacion" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Asistente de la educación</a></li>
+                        </ul>
+                        <ul class="w-1/2 pl-4">
+                            <li role="none"><a href="#religion" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Religión</a></li>
+                            <li role="none"><a href="#jefaturas-departamentos" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Jefaturas de Departamentos</a></li>
+                            <li role="none"><a href="#niveles-educacion" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Niveles de Educación (Pre-Básica, Básica, Media)</a></li>
+                            <li role="none"><a href="#lenguaje-comunicacion" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Lenguaje y Comunicación</a></li>
+                            <li role="none"><a href="#artes" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Artes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group" role="none">
+                <button aria-haspopup="true" aria-expanded="false" class="modern-nav-link transition inline-block" id="menu-talleres" aria-controls="submenu-talleres" role="menuitem" tabindex="0">
+                    Talleres
+                </button>
+                <div class="absolute left-0 mt-1 w-[280px] dropdown-gradient rounded-md shadow-lg z-50 p-4" id="submenu-talleres" role="menu" aria-labelledby="menu-talleres" tabindex="-1">
+                    <ul class="py-2">
+                        <li role="none"><a href="#orquesta" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Orquesta</a></li>
+                        <li role="none"><a href="#banda-instrumental" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Banda Instrumental</a></li>
+                        <li role="none"><a href="#banda-de-guerra" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Banda de Guerra</a></li>
+                        <li role="none"><a href="#coro" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Coro</a></li>
+                        <li role="none"><a href="#futbol" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Futbol</a></li>
+                        <li role="none"><a href="#ajedrez" class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Ajedrez</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="relative group" role="none">
+                <button aria-haspopup="true" aria-expanded="false" class="modern-nav-link transition inline-block" id="menu-convivencia" aria-controls="submenu-convivencia" role="menuitem" tabindex="0">
+                    Convivencia Escolar
+                </button>
+                <div class="absolute left-0 mt-1 w-[320px] dropdown-gradient rounded-md shadow-lg z-50 p-4" id="submenu-convivencia" role="menu" aria-labelledby="menu-convivencia" tabindex="-1">
+                    <ul class="py-2">
+                        <li role="none"><a href="Documents/ReglamentodeConvivenciaActual.pdf" download class="block px-4 py-2 hover:bg-white/10 rounded" role="menuitem" tabindex="-1">Descargar Reglamento de Convivencia</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="relative group" role="none">
+                <a href="#pie" class="modern-nav-link transition inline-block" role="menuitem" tabindex="0">PIE</a>
+            </div>
+            <div class="relative group" role="none">
+                <a href="#centro-de-padres" class="modern-nav-link transition inline-block" role="menuitem" tabindex="0">Centro de Padres</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding-top: 100px;">
+        <div class="section-divider">
+            <i class="fas fa-book-open divider-icon"></i>
+        </div>
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-primary mb-8">Anuarios</h2>
+                <div class="flex flex-col md:flex-row gap-6 h-[80vh]">
+                    <!-- Sidebar with list of anuarios -->
+                    <aside class="md:w-1/4 bg-white rounded-lg shadow p-4 overflow-y-auto">
+                        <h3 class="text-xl font-semibold mb-4">Anuarios</h3>
+                        <ul id="anuario-list" class="space-y-3">
+                            <!-- Example items -->
+                            <li>
+                                <button data-pdf="../Documents/Anuario.pdf" class="anuario-item w-full text-left px-3 py-2 rounded hover:bg-primary hover:text-white transition">
+                                    Anuario 2024
+                                </button>
+                            </li>
+                            <li>
+                                <button data-pdf="../Documents/Anuario.pdf" class="anuario-item w-full text-left px-3 py-2 rounded hover:bg-primary hover:text-white transition">
+                                    Anuario 2023
+                                </button>
+                            </li>
+                            <li>
+                                <button data-pdf="../Documents/Anuario.pdf" class="anuario-item w-full text-left px-3 py-2 rounded hover:bg-primary hover:text-white transition">
+                                    Anuario 2022
+                                </button>
+                            </li>
+                        </ul>
+                    </aside>
+                    <!-- Preview area -->
+                    <section class="md:w-3/4 bg-white rounded-lg shadow p-4 flex flex-col">
+                        <div class="flex-grow">
+                            <iframe 
+                                id="pdf-preview"
+                                src="../Documents/Anuario.pdf" 
+                                width="100%" 
+                                height="100%" 
+                                allowfullscreen 
+                                webkitallowfullscreen 
+                                mozallowfullscreen 
+                                class="border border-gray-300 rounded-lg"
+                                aria-label="Vista previa del anuario">
+                                <p>Cargando el anuario...</p>
+                            </iframe>
+                        </div>
+                        <div class="mt-4">
+                            <a id="download-link" href="../Documents/Anuario.pdf" download class="inline-block bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition">
+                                <i class="fas fa-download mr-2"></i>Descargar Anuario
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="../assets/logoColeOptimizado.png" alt="Logo Footer" class="h-20 mb-4" />
+                    <p class="text-sm">Formando líderes del mañana con excelencia académica y valores.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#colegio" class="hover:text-secondary transition">Colegio</a></li>
+                        <li><a href="#alumnos" class="hover:text-secondary transition">Alumnos</a></li>
+                        <li><a href="#area-academica" class="hover:text-secondary transition">Área Académica</a></li>
+                        <li><a href="#talleres" class="hover:text-secondary transition">Talleres</a></li>
+                        <li><a href="#convivencia-escolar" class="hover:text-secondary transition">Convivencia Escolar</a></li>
+                        <li><a href="#pie" class="hover:text-secondary transition">PIE</a></li>
+                        <li><a href="#centro-de-padres" class="hover:text-secondary transition">Centro de Padres</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Servicios</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-secondary transition">SchoolTrack</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Intranet</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Biblioteca</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Soporte</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://web.facebook.com/EscOlegarioMorales" target="_blank" class="hover:text-secondary transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/omo_paillaco?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="hover:text-secondary transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="hover:text-secondary transition" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" target="_blank" class="hover:text-secondary transition" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/20 mt-8 pt-8 text-center flex items-center justify-center space-x-2">
+                <p class="mb-0">creado con pasión y dedicación por UrbanZync Paillaco <span class="text-green-600">&#x2618;</span></p>
+                <img src="../assets/logoUrbanZync.png" alt="UrbanZync Logo" class="h-6 inline-block" />
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to handle anuario selection and preview update
+        document.addEventListener('DOMContentLoaded', () => {
+            const anuarioList = document.getElementById('anuario-list');
+            const pdfPreview = document.getElementById('pdf-preview');
+            const downloadLink = document.getElementById('download-link');
+            const items = anuarioList.querySelectorAll('.anuario-item');
+
+            function clearActive() {
+                items.forEach(item => item.classList.remove('bg-primary', 'text-white'));
+            }
+
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    clearActive();
+                    item.classList.add('bg-primary', 'text-white');
+                    const pdfPath = item.getAttribute('data-pdf');
+                    pdfPreview.src = pdfPath;
+                    downloadLink.href = pdfPath;
+                    downloadLink.textContent = `Descargar ${item.textContent.trim()}`;
+                    // Add icon back
+                    const icon = document.createElement('i');
+                    icon.className = 'fas fa-download mr-2';
+                    downloadLink.prepend(icon);
+                });
+            });
+
+            // Set first item active by default
+            if (items.length > 0) {
+                items[0].click();
+            }
+
+            // Clock update function
+            function updateClock() {
+                const now = new Date();
+                const timeElem = document.getElementById('current-time');
+                const dateElem = document.getElementById('current-date');
+
+                if (timeElem && dateElem) {
+                    // Format time as HH:MM:SS
+                    const hours = now.getHours().toString().padStart(2, '0');
+                    const minutes = now.getMinutes().toString().padStart(2, '0');
+                    const seconds = now.getSeconds().toString().padStart(2, '0');
+                    timeElem.textContent = `${hours}:${minutes}:${seconds}`;
+
+                    // Format date as weekday, day month year in Spanish
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    const formattedDate = now.toLocaleDateString('es-ES', options);
+                    dateElem.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+                }
+            }
+
+            // Initial call and interval for clock update
+            updateClock();
+            setInterval(updateClock, 1000);
+        });
+    </script>
+
+</body>
+</html>
