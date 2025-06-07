@@ -1,7 +1,4 @@
 
-Built by https://www.blackbox.ai
-
----
 
 # Escuela Olegario Morales Oliva - Paillaco
 
